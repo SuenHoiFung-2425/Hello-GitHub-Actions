@@ -6,3 +6,8 @@ jobs:
   my_job:
     name: Post wecome comment
     runs-on: ubuntu-latest
+    steps:
+      - run: gh prcomment $PR_URL --body "welcome to the repository!"
+        env: 
+           GITUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+           PR_URL: ${{ github.event.pull_request.html_url }}
